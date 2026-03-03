@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ganesamoorthi R | AWS & Azure DevOps Architect</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+
+
+        :root {
+
+            --primary: #3b82f6;
+
+            --accent: #8b5cf6;
+
+            --bg-dark: #020617;
+
+            --cloud-blue: rgba(59, 130, 246, 0.08);
+
+        }
+
+
+
+        body {
+
+            font-family: 'Space Grotesk', sans-serif;
+
+            background-color: var(--bg-dark);
+
+            color: #f1f5f9;
+
+            scroll-behavior: smooth;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+
+
+        /* --- CLOUD ANIMATION BACKGROUND --- */
+
+        .nebula {
+
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+
+            background: 
+
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+
+                url('https://www.transparenttextures.com/patterns/stardust.png');
+
+            z-index: -1;
+
+            animation: bgMove 20s ease-in-out infinite alternate;
+
+        }
+
+
+
+        @keyframes bgMove {
+
+            0% { transform: scale(1); }
+
+            100% { transform: scale(1.1); }
+
+        }
+
+
+
+        /* --- PROFILE IMAGE 3D EFFECT --- */
+
+        .profile-container {
+
+            position: relative;
+
+            width: 180px;
+
+            height: 180px;
+
+            margin: 0 auto 2rem;
+
+        }
+
+
+
+        .profile-img {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+
+            object-fit: cover;
+
+            border: 4px solid var(--primary);
+
+            animation: morph 8s ease-in-out infinite;
+
+            z-index: 2;
+
+            position: relative;
+
+            background: #1e293b;
+
+        }
+
+
+
+        @keyframes morph {
+
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+
+        }
+
+
+
+        .profile-ring {
+
+            position: absolute;
+
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+
+            border: 2px dashed var(--primary);
+
+            border-radius: 50%;
+
+            animation: spin 15s linear infinite;
+
+            opacity: 0.3;
+
+        }
+
+
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+
+
+        /* --- GLASS CARDS --- */
+
+        .glass-card {
+
+            background: rgba(255, 255, 255, 0.01);
+
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+        }
+
+
+
+        .glass-card:hover {
+
+            background: rgba(59, 130, 246, 0.04);
+
+            border-color: var(--primary);
+
+            transform: translateY(-12px) rotateX(2deg);
+
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.6);
+
+        }
+
+
+
+        /* --- LOGO ANIMATIONS --- */
+
+        .logo-float { animation: floatIcon 5s ease-in-out infinite; }
+
+        @keyframes floatIcon {
+
+            0%, 100% { transform: translateY(0) scale(1); filter: brightness(0.8); }
+
+            50% { transform: translateY(-25px) scale(1.1); filter: brightness(1.2) drop-shadow(0 0 15px var(--primary)); }
+
+        }
+
+
+
+        /* --- TEXT EFFECTS --- */
+
+        .text-gradient {
+
+            background: linear-gradient(to right, #60a5fa, #a855f7, #2dd4bf);
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            background-size: 200% auto;
+
+            animation: shine 5s linear infinite;
+
+        }
+
+
+
+        @keyframes shine { to { background-position: 200% center; } }
+
+
+
+        .name-heading {
+
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+            letter-spacing: -0.05em;
+
+            font-weight: 800;
+
+        }
+
+
+
+        /* Custom Scrollbar */
+
+        ::-webkit-scrollbar { width: 8px; }
+
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="nebula"></div>
+
+
+
+    <nav class="fixed top-0 w-full z-50 px-6 py-6">
+
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-10 py-4 rounded-full border-white/10">
+
+            <div class="mono font-bold text-sm tracking-tighter">
+
+                <span class="text-blue-500 animate-pulse">●</span> GANESAMOORTHI // ARCHITECT
+
+            </div>
+
+            <div class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.3em] font-bold">
+
+                <a href="#about" class="hover:text-blue-400 transition">01. Identity</a>
+
+                <a href="#experience" class="hover:text-blue-400 transition">02. Career</a>
+
+                <a href="#projects" class="hover:text-blue-400 transition">03. Nodes</a>
+
+                <a href="#certifications" class="hover:text-blue-400 transition">04. Credentials</a>
+
+            </div>
+
+            <a href="mailto:rganeshbemecho07@gmail.com" class="text-[10px] bg-white text-black px-6 py-2 rounded-full font-black hover:bg-blue-500 hover:text-white transition-all duration-300">GET IN TOUCH</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <section id="about" class="min-h-screen flex flex-col justify-center items-center pt-32 px-6">
+
+        
+
+        <div class="profile-container animate__animated animate__zoomIn">
+
+            <div class="profile-ring"></div>
+
+            <img src="YOUR_PHOTO_URL_HERE" alt="Ganesamoorthi R" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=Ganesamoorthi+R&background=3b82f6&color=fff&size=512'">
+
+        </div>
+
+
+
+        <div class="animate__animated animate__fadeIn text-center">
+
+            <div class="mono text-blue-500 text-xs mb-4 tracking-[0.5em] uppercase font-bold">Cloud Infrastructure Specialist</div>
+
+            <h1 class="name-heading mb-6 tracking-tighter">GANESAMOORTHI R</h1>
+
+            <p class="max-w-3xl mx-auto text-gray-400 text-xl leading-relaxed mb-12 font-light">
+
+                Engineering <span class="text-white font-semibold">secure, scalable, and automated</span> cloud ecosystems. 3+ Years of experience in optimizing deployment lifecycles and maintaining <span class="text-blue-400 font-bold">95%+ SLA compliance</span> for enterprise environments.
+
+            </p>
+
+            
+
+            <div class="flex justify-center gap-8 mb-20">
+
+                <a href="https://linkedin.com/in/ganesamoorthi-r-99b880223" target="_blank" class="glass-card p-4 rounded-full hover:text-blue-400 transition-all"><i class="fab fa-linkedin-in text-xl"></i></a>
+
+                <a href="mailto:rganeshbemecho07@gmail.com" class="glass-card p-4 rounded-full hover:text-blue-400 transition-all"><i class="far fa-envelope text-xl"></i></a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="grid grid-cols-4 md:grid-cols-8 gap-8 md:gap-16 max-w-6xl mx-auto pb-20">
+
+            <div class="logo-float" style="animation-delay: 0.1s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="AWS"></div>
+
+            <div class="logo-float" style="animation-delay: 0.3s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Azure"></div>
+
+            <div class="logo-float" style="animation-delay: 0.5s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Docker"></div>
+
+            <div class="logo-float" style="animation-delay: 0.7s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Kubernetes"></div>
+
+            <div class="logo-float" style="animation-delay: 0.9s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Jenkins"></div>
+
+            <div class="logo-float" style="animation-delay: 1.1s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Terraform"></div>
+
+            <div class="logo-float" style="animation-delay: 1.3s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Ansible"></div>
+
+            <div class="logo-float" style="animation-delay: 1.5s;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" class="w-14 opacity-50 hover:opacity-100 transition" title="Linux"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="experience" class="py-32 px-6 max-w-6xl mx-auto">
+
+        <h2 class="text-4xl font-bold mb-20 mono tracking-tighter"><span class="text-blue-500">01.</span> WORK EXPERIENCE</h2>
+
+        
+
+        <div class="space-y-16">
+
+            <div class="glass-card p-12 rounded-[3rem] reveal relative overflow-hidden group">
+
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition">
+
+                    <i class="fas fa-cloud text-9xl"></i>
+
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between mb-10 border-b border-white/5 pb-8">
+
+                    <div>
+
+                        <h3 class="text-2xl font-bold text-gradient">Desktop and Cloud Support Engineer</h3>
+
+                        <p class="text-gray-400 font-medium mt-2">SVN Systech India Pvt Ltd (Client: TCS-Tata BlueScope Steel)</p>
+
+                    </div>
+
+                    <div class="text-blue-500 mono text-sm font-bold mt-4 md:mt-0">JAN 2024 — JAN 2026</div>
+
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+
+                    <div class="space-y-6">
+
+                        <p class="text-sm text-gray-400 leading-relaxed border-l-2 border-blue-500/50 pl-6">
+
+                            Resolved an average of <span class="text-white font-bold">20-40 technical support tickets daily</span>, consistently achieving <span class="text-white font-bold">95% SLA compliance</span> in high-demand enterprise environments.
+
+                        </p>
+
+                        <p class="text-sm text-gray-400 leading-relaxed border-l-2 border-blue-500/50 pl-6">
+
+                            Automated end-to-end deployments using <span class="text-white font-bold">Jenkins, Docker, and GitHub</span>, reducing manual effort and ensuring consistent releases.
+
+                        </p>
+
+                    </div>
+
+                    <div class="space-y-6">
+
+                        <p class="text-sm text-gray-400 leading-relaxed border-l-2 border-blue-500/50 pl-6">
+
+                            Designed and deployed AWS & Azure infrastructure including <span class="text-white font-bold">EC2, S3, VPC, IAM, VNet, and NSG</span> configurations for optimal security.
+
+                        </p>
+
+                        <p class="text-sm text-gray-400 leading-relaxed border-l-2 border-blue-500/50 pl-6">
+
+                            Built and implemented CI/CD pipelines, improving deployment speed by <span class="text-white font-bold">40%</span> through GitHub and Docker integration.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="glass-card p-12 rounded-[3rem] reveal group">
+
+                <div class="flex flex-col md:flex-row justify-between mb-10 border-b border-white/5 pb-8">
+
+                    <div>
+
+                        <h3 class="text-2xl font-bold text-gradient">Desktop Support Engineer</h3>
+
+                        <p class="text-gray-400 font-medium mt-2">Conjoint Solution Pvt Ltd (Client: Thinksynq Solutions)</p>
+
+                    </div>
+
+                    <div class="text-purple-500 mono text-sm font-bold mt-4 md:mt-0">NOV 2022 — JAN 2024</div>
+
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+
+                    <ul class="space-y-4 text-sm text-gray-400">
+
+                        <li class="flex items-start gap-3"><span class="text-purple-500 mt-1">▹</span> Installed and configured Windows OS and BIOS settings for enterprise performance optimization.</li>
+
+                        <li class="flex items-start gap-3"><span class="text-purple-500 mt-1">▹</span> Managed IP configurations, printer setups, and endpoint security implementations.</li>
+
+                    </ul>
+
+                    <ul class="space-y-4 text-sm text-gray-400">
+
+                        <li class="flex items-start gap-3"><span class="text-purple-500 mt-1">▹</span> Provided comprehensive Microsoft 365 troubleshooting for Outlook, Teams, and OneDrive.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="projects" class="py-32 bg-slate-900/10">
+
+        <div class="max-w-6xl mx-auto px-6">
+
+            <h2 class="text-4xl font-bold mb-20 mono tracking-tighter text-right">PROJECTS <span class="text-blue-500">.02</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                
+
+                <div class="glass-card p-10 rounded-3xl reveal border-t-4 border-t-blue-500">
+
+                    <div class="flex justify-between items-start mb-6">
+
+                        <i class="fas fa-microchip text-3xl text-blue-500"></i>
+
+                        <span class="mono text-[10px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase font-black">Live Production</span>
+
+                    </div>
+
+                    <h4 class="text-2xl font-bold mb-4">AccuFin Services CI/CD Deployment</h4>
+
+                    <p class="text-sm text-gray-400 leading-relaxed mb-8">
+
+                        Implemented a fully automated CI/CD pipeline for deploying the AccuFin Services website on AWS EC2. Configured GitHub-Jenkins webhooks, containerized the application using Docker, and deployed through Nginx with automated build, test, and release stages.
+
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 text-[10px] mono font-bold text-blue-400">
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#AWS_EC2</span>
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#DOCKER_HUB</span>
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#NGINX</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="glass-card p-10 rounded-3xl reveal border-t-4 border-t-purple-500">
+
+                    <div class="flex justify-between items-start mb-6">
+
+                        <i class="fas fa-network-wired text-3xl text-purple-500"></i>
+
+                        <span class="mono text-[10px] bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full uppercase font-black">Architecture</span>
+
+                    </div>
+
+                    <h4 class="text-2xl font-bold mb-4">Azure Virtual Network Infrastructure</h4>
+
+                    <p class="text-sm text-gray-400 leading-relaxed mb-8">
+
+                        Designed and deployed a Virtual Network (VNet) in Azure, securing resources with Network Security Group (NSG) firewall rules. Provisioned and managed Linux VMs, optimized performance, and configured snapshot backups for disaster recovery.
+
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 text-[10px] mono font-bold text-purple-400">
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#AZURE_VNET</span>
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#NSG_FIREWALL</span>
+
+                        <span class="bg-white/5 px-3 py-1 rounded">#DR_PLAN</span>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="certifications" class="py-32 px-6 max-w-6xl mx-auto">
+
+        <h2 class="text-4xl font-bold mb-20 text-center uppercase tracking-widest">Verification Node</h2>
+
+        <div class="grid md:grid-cols-3 gap-10">
+
+            
+
+            <div class="glass-card p-10 rounded-[2rem] text-center reveal border-b-4 border-b-blue-500">
+
+                <div class="relative w-28 h-28 mx-auto mb-8">
+
+                    <div class="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full"></div>
+
+                    <img src="https://images.credly.com/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" class="relative z-10 w-full" alt="AWS">
+
+                </div>
+
+                <h5 class="font-bold text-sm mb-4">AWS Certified Solutions Architect Associate</h5>
+
+                <a href="https://www.credly.com/earner/earned" target="_blank" class="mono text-[10px] text-blue-500 font-black hover:tracking-widest transition-all">VERIFY_ON_CREDLY_0101 →</a>
+
+            </div>
+
+
+
+            <div class="glass-card p-10 rounded-[2rem] text-center reveal border-b-4 border-b-white/20">
+
+                <i class="fas fa-graduation-cap text-5xl text-gray-600 mb-8 block"></i>
+
+                <h5 class="font-bold text-sm mb-2">Executive Post Graduate Program</h5>
+
+                <p class="text-[10px] text-blue-400 mono mb-4 uppercase">Cloud & DevOps (2025-2026)</p>
+
+                <p class="text-xs text-gray-500">Indian Institute of Technology Roorkee</p>
+
+            </div>
+
+
+
+            <div class="glass-card p-10 rounded-[2rem] text-center reveal border-b-4 border-b-white/20">
+
+                <i class="fas fa-university text-5xl text-gray-600 mb-8 block"></i>
+
+                <h5 class="font-bold text-sm mb-2">Bachelor of Engineering (Mechanical)</h5>
+
+                <p class="text-[10px] text-blue-400 mono mb-4 uppercase">Score: 65% Percentage</p>
+
+                <p class="text-xs text-gray-500 font-medium">Mahendra Institute of Technology (2016-2020)</p>
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+
+    <section class="py-32 px-6 border-t border-white/5 bg-blue-600/5 overflow-hidden">
+
+        <div class="max-w-5xl mx-auto text-center relative">
+
+            <h3 class="mono text-[10px] mb-12 tracking-[0.6em] text-gray-500 uppercase font-black">FULL_INFRASTRUCTURE_MATRIX</h3>
+
+            <div class="flex flex-wrap justify-center gap-4">
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">AWS EC2/S3</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">VPC / IAM</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">ROUTE 53</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">CLOUDWATCH</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">TERRAFORM</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">ANSIBLE</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">AZURE DEVOPS</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">ACR / AKS</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">DOCKER K8S</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">SHELL SCRIPTING</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">SERVICENOW</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">LINUX ADMIN</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">ACTIVE DIRECTORY</span>
+
+                <span class="px-6 py-3 glass-card rounded-xl text-xs font-bold hover:text-blue-400 transition">SCCM MGMT</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer class="py-20 px-6 text-center border-t border-white/5">
+
+        <div class="max-w-7xl mx-auto">
+
+            <div class="flex flex-wrap justify-center gap-10 mb-10 mono text-[10px] font-bold tracking-widest text-gray-400">
+
+                <p><i class="fas fa-phone-alt text-blue-500 mr-2"></i> +91 7502908975</p>
+
+                <p><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> CHENNAI, INDIA</p>
+
+                <p><i class="fas fa-envelope text-blue-500 mr-2"></i> RGANESHBEMECHO07@GMAIL.COM</p>
+
+            </div>
+
+            <p class="mono text-[9px] uppercase opacity-40">System Status: <span class="text-green-500">Online</span> | Build: 2026.03.v1</p>
+
+            <p class="text-[9px] mt-4 opacity-20 italic">Designed with high-availability in mind.</p>
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        // Smooth Reveal Logic with varied directions
+
+        ScrollReveal().reveal('.reveal', { 
+
+            delay: 150, 
+
+            distance: '60px', 
+
+            origin: 'bottom', 
+
+            opacity: 0, 
+
+            duration: 1200,
+
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+
+        });
+
+    </script>
+
+</body>
+
+</html>
